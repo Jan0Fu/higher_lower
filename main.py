@@ -20,8 +20,7 @@ def higher_lower():
             profile2 = random_profile()
         if score == 0:
             print(f"Current score: {score}")
-        else:
-            print(f"You're right! Current score: {score}")
+        print(f"You're right! Current score: {score}")
         print(f" Compare A: {profile1}")
         print(vs)
         print(f" Against B: {profile2}")
@@ -36,8 +35,7 @@ def higher_lower():
             profile1 = profile2
         elif user_pick == 'b' and profile2['follower_count'] < profile1['follower_count']:
             game_over = True
-        else:
-            print("Invalid input")
+        game_over = True
         
 higher_lower()
 print("Wrong, Game Over.") #Final score: {score}")
