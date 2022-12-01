@@ -21,9 +21,9 @@ def higher_lower():
         if score == 0:
             print(f"Current score: {score}")
         print(f"You're right! Current score: {score}")
-        print(f" Compare A: {profile1}")
+        print(f" Compare A: {profile1['name']}, a {profile1['description']}, from {profile1['country']}.")
         print(vs)
-        print(f" Against B: {profile2}")
+        print(f" Against B: {profile2['name']}, a {profile2['description']}, from {profile2['country']}.")
         user_pick = input("Pick profile 'A' or profile 'B': ").lower()
         if user_pick == 'a' and profile1['follower_count'] > profile2['follower_count']:
             score += 1
@@ -35,7 +35,10 @@ def higher_lower():
             profile1 = profile2
         elif user_pick == 'b' and profile2['follower_count'] < profile1['follower_count']:
             game_over = True
-        game_over = True
+        else:
+            game_over = True
         
 higher_lower()
+os.system('clear')
+print(logo)
 print("Wrong, Game Over.") #Final score: {score}")
