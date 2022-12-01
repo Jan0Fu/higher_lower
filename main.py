@@ -6,7 +6,14 @@ import os
 def random_profile():
     return (random.choice(data))
 
+def compare(user_pick, followers1, followers2):
+    if followers1 > followers2:
+        return user_pick == "a"
+    else:
+        return user_pick == "b"
+
 def higher_lower():
+    global score
     score = 0
     game_over = False
     profile1 = 0
@@ -19,26 +26,22 @@ def higher_lower():
         if profile1 == profile2:
             profile2 = random_profile()
         if score == 0:
-            print(f"Current score: {score}")
-        print(f"You're right! Current score: {score}")
+            print(f" Current score: {score}")
+        else:
+            print(f" You're right! Current score: {score}")
         print(f" Compare A: {profile1['name']}, a {profile1['description']}, from {profile1['country']}.")
         print(vs)
         print(f" Against B: {profile2['name']}, a {profile2['description']}, from {profile2['country']}.")
-        user_pick = input("Pick profile 'A' or profile 'B': ").lower()
-        if user_pick == 'a' and profile1['follower_count'] > profile2['follower_count']:
+        user_pick = input(" Pick profile 'A' or profile 'B': ").lower()
+        profile1_followers = profile1['follower_count']
+        profile2_followers = profile2['follower_count']
+        is_correct = compare(user_pick, profile1_followers, profile2_followers)
+        if is_correct:
             score += 1
-            profile1 = profile2
-        elif user_pick == 'a' and profile2['follower_count'] > profile1['follower_count']:
-            game_over = True
-        elif user_pick == 'b' and profile2['follower_count'] > profile1['follower_count']:
-            score += 1
-            profile1 = profile2
-        elif user_pick == 'b' and profile2['follower_count'] < profile1['follower_count']:
-            game_over = True
         else:
             game_over = True
-        
+
 higher_lower()
 os.system('clear')
 print(logo)
-print("Wrong, Game Over.") #Final score: {score}")
+print(f" Wrong, Game Over. Final score: {score}")
